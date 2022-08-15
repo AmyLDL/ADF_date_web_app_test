@@ -5,9 +5,6 @@ def duration():
 def when():
     pass
 
-def test_tautology():
-    assert 5 == 3+2
-
 from datecalc import duration
 from datecalc import when
 import datetime
@@ -50,3 +47,38 @@ def test_35day_duration ():
     # Assert
     assert final_duration == expected_duration
 
+def test_when_zero ():
+    # Arrange
+    start_date = datetime.date.today()
+    days_between = 0
+    expected_when = start_date
+
+    # Act
+    final_when = when(start_date, days_between)
+
+    # Assert
+    assert final_when == expected_when
+
+def test_when_add_10days ():
+    # Arrange
+    start_date = datetime.date(2022,8,8)
+    days_between = 10
+    expected_when = datetime.date(2022,8,18)
+
+    # Act
+    final_when = when(start_date, days_between)
+
+    # Assert
+    assert final_when == expected_when
+
+def test_when_add_100days ():
+    # Arrange
+    start_date = datetime.date(2022,8,8)
+    days_between = 100
+    expected_when = datetime.date(2022,11,16)
+
+    # Act
+    final_when = when(start_date, days_between)
+
+    # Assert
+    assert final_when == expected_when
